@@ -105,14 +105,16 @@ def add_todo():
         "completed": False
     }
     todos.append(todo)
-    on_add_todo_logging(todoStr)
+    for _ in range(10_000):
+        on_add_todo_logging(todoStr)
     return '', 204
 
 
 @app.route('/todos', methods=['GET'])
 def get_todos():
     todos = Store.getInstance().todos
-    on_get_todos_logging(todos)
+    for _ in range(10_000):
+        on_get_todos_logging(todos)
     return json.dumps(todos)
 
 
